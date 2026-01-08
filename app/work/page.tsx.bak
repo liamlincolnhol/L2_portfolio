@@ -1,0 +1,218 @@
+'use client';
+
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Navigation from '@/components/Navigation';
+import Card from '@/components/ui/Card';
+import Section from '@/components/ui/Section';
+
+// Sample projects data - to be replaced with real data
+const allProjects = [
+  {
+    id: 1,
+    title: 'Brand Strategy',
+    client: 'Global Tech Co.',
+    category: 'Strategy',
+    description: 'Comprehensive brand positioning and go-to-market strategy.',
+    image: '/placeholder-1.jpg',
+    year: '2024',
+  },
+  {
+    id: 2,
+    title: 'Digital Experience',
+    client: 'Luxury Retail',
+    category: 'Design',
+    description: 'End-to-end e-commerce platform with immersive storytelling.',
+    image: '/placeholder-2.jpg',
+    year: '2024',
+  },
+  {
+    id: 3,
+    title: 'Product Innovation',
+    client: 'FinTech Startup',
+    category: 'Product',
+    description: 'User-centered design for next-generation financial tools.',
+    image: '/placeholder-3.jpg',
+    year: '2023',
+  },
+  {
+    id: 4,
+    title: 'Visual Identity',
+    client: 'Creative Studio',
+    category: 'Branding',
+    description: 'Complete brand identity system for boutique design agency.',
+    image: '/placeholder-4.jpg',
+    year: '2023',
+  },
+  {
+    id: 5,
+    title: 'Mobile App',
+    client: 'Health & Wellness',
+    category: 'Product',
+    description: 'Mindfulness and meditation app with personalized experiences.',
+    image: '/placeholder-5.jpg',
+    year: '2024',
+  },
+  {
+    id: 6,
+    title: 'Marketing Campaign',
+    client: 'Sustainable Fashion',
+    category: 'Strategy',
+    description: 'Integrated campaign launch for eco-conscious clothing brand.',
+    image: '/placeholder-6.jpg',
+    year: '2023',
+  },
+];
+
+const categories = ['All', 'Strategy', 'Design', 'Product', 'Branding'];
+
+export default function Work() {
+  const [activeCategory, setActiveCategory] = useState('All');
+
+  const filteredProjects =
+    activeCategory === 'All'
+      ? allProjects
+      : allProjects.filter((project) => project.category === activeCategory);
+
+  return (
+    <>
+      <Navigation />
+
+      <Section className="pt-32">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-16"
+        >
+          <h1
+            className="text-6xl md:text-7xl lg:text-8xl font-medium mb-6"
+            style={{ fontFamily: 'var(--font-playfair)' }}
+          >
+            Our <em className="italic">Work</em>
+          </h1>
+          <p
+            className="text-lg md:text-xl text-foreground/70 max-w-2xl"
+           
+          >
+            A curated collection of projects spanning strategy, design, and
+            innovation. Each one crafted with intention and expertise.
+          </p>
+        </motion.div>
+
+        {/* Filter Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-12"
+        >
+          <div className="flex flex-wrap gap-3">
+            {categories.map((category) => {
+              const isActive = activeCategory === category;
+
+              return (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`relative px-6 py-3 rounded-[999px] text-sm font-medium transition-all duration-200 ${
+                    isActive
+                      ? 'bg-dark-container text-white'
+                      : 'bg-white/50 backdrop-blur-sm hover:bg-white/80'
+                  }`}
+                 
+                >
+                  {category}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeCategory"
+                      className="absolute -top-[2px] left-0 right-0 h-[2px] bg-accent"
+                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        {/* Projects Grid */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategory}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card hover className="h-full cursor-pointer group">
+                  {/* Placeholder for image */}
+                  <div className="aspect-[4/3] bg-gradient-to-br from-salmon/20 via-amber/20 to-seafoam/20 rounded-lg mb-6 overflow-hidden relative">
+                    <div className="w-full h-full flex items-center justify-center text-foreground/20">
+                      <span className="text-sm">Project Image</span>
+                    </div>
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium">
+                      {project.year}
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <p
+                      className="text-sm text-accent font-medium"
+                     
+                    >
+                      {project.category}
+                    </p>
+                    <h3
+                      className="text-2xl font-medium group-hover:text-accent transition-colors"
+                      style={{ fontFamily: 'var(--font-playfair)' }}
+                    >
+                      {project.title}
+                    </h3>
+                    <p
+                      className="text-sm text-foreground/60"
+                     
+                    >
+                      {project.client}
+                    </p>
+                    <p
+                      className="text-foreground/70 leading-relaxed"
+                     
+                    >
+                      {project.description}
+                    </p>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Empty State */}
+        {filteredProjects.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-20"
+          >
+            <p
+              className="text-lg text-foreground/50"
+             
+            >
+              No projects found in this category.
+            </p>
+          </motion.div>
+        )}
+      </Section>
+    </>
+  );
+}

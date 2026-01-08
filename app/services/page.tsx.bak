@@ -1,0 +1,247 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import Navigation from '@/components/Navigation';
+import Button from '@/components/ui/Button';
+import Card from '@/components/ui/Card';
+import Section from '@/components/ui/Section';
+import Divider from '@/components/ui/Divider';
+
+const services = [
+  {
+    id: 1,
+    title: 'Brand Strategy',
+    description:
+      'We help organizations define their unique position, articulate their value, and build brands that resonate deeply with their audiences.',
+    offerings: [
+      'Brand Positioning & Architecture',
+      'Competitive Analysis',
+      'Messaging & Voice Development',
+      'Go-to-Market Strategy',
+    ],
+  },
+  {
+    id: 2,
+    title: 'Digital Design',
+    description:
+      'From websites to digital products, we create experiences that are both beautiful and functional, grounded in user needs and business goals.',
+    offerings: [
+      'UI/UX Design',
+      'Website Design & Development',
+      'Design Systems',
+      'Responsive & Accessible Design',
+    ],
+  },
+  {
+    id: 3,
+    title: 'Product Innovation',
+    description:
+      'We partner with teams to envision, design, and launch digital products that solve real problems and create meaningful value.',
+    offerings: [
+      'Product Strategy',
+      'User Research & Testing',
+      'Prototyping & Validation',
+      'Product Development',
+    ],
+  },
+  {
+    id: 4,
+    title: 'Visual Identity',
+    description:
+      'Complete visual identity systems that capture the essence of your brand and provide a consistent foundation across all touchpoints.',
+    offerings: [
+      'Logo & Identity Design',
+      'Brand Guidelines',
+      'Typography & Color Systems',
+      'Marketing Collateral',
+    ],
+  },
+];
+
+const process = [
+  {
+    step: '01',
+    title: 'Discovery',
+    description:
+      'We begin by deeply understanding your business, audience, and goals through research and collaborative workshops.',
+  },
+  {
+    step: '02',
+    title: 'Strategy',
+    description:
+      'We define the strategic foundation, identifying opportunities and crafting a roadmap for success.',
+  },
+  {
+    step: '03',
+    title: 'Design',
+    description:
+      'Our team brings concepts to life through iterative design, always grounded in user feedback and data.',
+  },
+  {
+    step: '04',
+    title: 'Delivery',
+    description:
+      'We deliver polished solutions, provide ongoing support, and ensure seamless implementation.',
+  },
+];
+
+export default function Services() {
+  return (
+    <>
+      <Navigation />
+
+      {/* Hero Section */}
+      <Section className="pt-32">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl"
+        >
+          <h1
+            className="text-6xl md:text-7xl lg:text-8xl font-medium mb-6"
+            style={{ fontFamily: 'var(--font-playfair)' }}
+          >
+            Services that <em className="italic">transform</em>
+          </h1>
+          <p
+            className="text-lg md:text-xl text-foreground/70 leading-relaxed"
+           
+          >
+            We offer a comprehensive suite of services designed to help
+            ambitious organizations build distinctive brands, create exceptional
+            digital experiences, and drive meaningful growth.
+          </p>
+        </motion.div>
+      </Section>
+
+      <Divider />
+
+      {/* Services Grid */}
+      <Section>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <Card variant="dark" className="h-full">
+                <h2
+                  className="text-4xl md:text-5xl font-medium mb-4"
+                  style={{ fontFamily: 'var(--font-playfair)' }}
+                >
+                  {service.title}
+                </h2>
+                <p
+                  className="text-white/80 mb-8 leading-relaxed"
+                 
+                >
+                  {service.description}
+                </p>
+
+                <div className="space-y-3">
+                  {service.offerings.map((offering) => (
+                    <div
+                      key={offering}
+                      className="flex items-center gap-3"
+                     
+                    >
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
+                      <span className="text-white/90">{offering}</span>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      <Divider />
+
+      {/* Process Section */}
+      <Section>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <h2
+            className="text-5xl md:text-6xl font-medium mb-6"
+            style={{ fontFamily: 'var(--font-playfair)' }}
+          >
+            Our <em className="italic">Process</em>
+          </h2>
+          <p
+            className="text-lg text-foreground/70 max-w-2xl"
+           
+          >
+            A proven approach that balances strategic thinking with creative
+            execution, ensuring exceptional results every time.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {process.map((item, index) => (
+            <motion.div
+              key={item.step}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="space-y-4"
+            >
+              <div className="inline-block px-4 py-2 bg-accent text-white rounded-full text-sm font-medium">
+                {item.step}
+              </div>
+              <h3
+                className="text-3xl font-medium"
+                style={{ fontFamily: 'var(--font-playfair)' }}
+              >
+                {item.title}
+              </h3>
+              <p
+                className="text-foreground/70 leading-relaxed"
+               
+              >
+                {item.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      <Divider />
+
+      {/* CTA Section */}
+      <Section>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto"
+        >
+          <h2
+            className="text-5xl md:text-6xl font-medium mb-6"
+            style={{ fontFamily: 'var(--font-playfair)' }}
+          >
+            Ready to get <em className="italic">started?</em>
+          </h2>
+          <p
+            className="text-lg text-foreground/70 mb-10"
+           
+          >
+            Let's discuss how we can help bring your vision to life.
+          </p>
+          <Button href="/contact">Start a Project</Button>
+        </motion.div>
+      </Section>
+    </>
+  );
+}
