@@ -21,7 +21,7 @@ const allProjects = [
     title: 'Forever Data',
     client: 'On-Chain Data Storage',
     category: 'Web Design',
-    description: 'Website for an Ethereum-based data storage system. Built a clear, technical presentation that explains their blockchain solution to both technical and non-technical audiences.',
+    description: 'Pure utility interface for an Ethereum data storage platform. No marketing, no explanations—just a streamlined tool for uploading and storing data permanently on-chain.',
     image: '/forever_data.png',
     year: '2024',
   },

@@ -23,7 +23,7 @@ const featuredProjects = [
     title: 'Forever Data',
     client: 'On-Chain Data Storage',
     category: 'Web Design',
-    description: 'Website for an Ethereum-based data storage system. Built a clear, technical presentation that explains their blockchain solution to both technical and non-technical audiences.',
+    description: 'Pure utility interface for an Ethereum data storage platform. No marketing, no explanations—just a streamlined tool for uploading and storing data permanently on-chain.',
     image: '/forever_data.png',
   },
   // {
@@ -112,8 +112,8 @@ export default function Home() {
             Recent <em className="italic">Projects</em>
           </h2>
           <p className="text-lg text-foreground/70 max-w-2xl">
-            Real websites I've built for real businesses. Each one helped a
-            company go from hidden to findable online.
+            Real projects for real businesses. From building online presence for
+            local companies to adding new features for established platforms.
           </p>
         </motion.div>
 
