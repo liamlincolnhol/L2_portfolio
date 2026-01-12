@@ -90,23 +90,23 @@ const process = [
 const faqs = [
   {
     question: "How long does it take to build a website?",
-    answer: "Most projects for Grand Rapids businesses launch in 2-3 weeks. We work quickly without sacrificing quality, getting you online when you need it—not months from now."
+    answer: "Most projects launch in 2-3 weeks. I work quickly without sacrificing quality, getting you online when you need it—not months from now."
   },
   {
-    question: "How much does a website cost in Grand Rapids?",
-    answer: "As a student building my portfolio, I offer agency-quality work at rates that make sense for local businesses in Grand Rapids and Lowell. Contact me for a custom quote based on your specific needs."
+    question: "How much does a website cost?",
+    answer: "As a student building my portfolio, I offer agency-quality work at rates that make sense for local businesses. Contact me for a custom quote based on your specific needs."
   },
   {
     question: "Do you offer ongoing website maintenance?",
-    answer: "Yes! I provide ongoing support for all Grand Rapids area clients including content updates, bug fixes, performance optimization, and technical support to keep your site running smoothly."
+    answer: "Yes! I provide ongoing support including content updates, bug fixes, performance optimization, and technical support to keep your site running smoothly."
   },
   {
     question: "Will my website work on mobile phones?",
-    answer: "Absolutely. Every website I build is fully responsive and mobile-first, ensuring it looks great and works perfectly on all devices. This is critical for Grand Rapids businesses reaching customers on-the-go."
+    answer: "Absolutely. Every website I build is fully responsive and mobile-first, ensuring it looks great and works perfectly on all devices—from phones to tablets to desktops."
   },
   {
-    question: "Do you help with local SEO for Grand Rapids businesses?",
-    answer: "Yes, all websites include built-in SEO best practices: clean code, fast loading, proper structure, local Grand Rapids SEO optimization, and Google Business integration."
+    question: "Do you help with local SEO?",
+    answer: "Yes, all websites include built-in SEO best practices: clean code, fast loading, proper structure, and local optimization to help customers in the Grand Rapids area find you on Google."
   },
   {
     question: "Do you work with businesses in Lowell, Cascade, and Ada?",
@@ -227,15 +227,10 @@ export default function Services() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl"
         >
-          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-medium mb-6"
-
-          >
+          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-medium mb-6">
             What I <em className="italic">build</em>
           </h1>
-          <p
-            className="text-lg md:text-xl text-foreground/70 leading-relaxed"
-
-          >
+          <p className="text-lg md:text-xl text-foreground/70 leading-relaxed">
             Custom websites for local businesses. Fast turnarounds, professional
             results, and pricing that makes sense. Here's what I can do for you.
           </p>
@@ -257,25 +252,16 @@ export default function Services() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               <Card variant="dark" className="h-full">
-                <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-medium mb-4"
-
-                >
+                <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-medium mb-4">
                   {service.title}
                 </h2>
-                <p
-                  className="card-dark-text-80 mb-8 leading-relaxed"
-
-                >
+                <p className="card-dark-text-80 mb-8 leading-relaxed">
                   {service.description}
                 </p>
 
                 <div className="space-y-3">
                   {service.offerings.map((offering) => (
-                    <div
-                      key={offering}
-                      className="flex items-center gap-3"
-
-                    >
+                    <div key={offering} className="flex items-center gap-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
                       <span className="card-dark-text-90">{offering}</span>
                     </div>
@@ -298,15 +284,10 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="font-heading text-3xl md:text-5xl lg:text-6xl font-medium mb-6"
-
-          >
+          <h2 className="font-heading text-3xl md:text-5xl lg:text-6xl font-medium mb-6">
             How it <em className="italic">works</em>
           </h2>
-          <p
-            className="text-lg text-foreground/70 max-w-2xl"
-
-          >
+          <p className="text-lg text-foreground/70 max-w-2xl">
             A straightforward process that gets you online without the confusion
             or complexity. From first call to launch.
           </p>
@@ -325,15 +306,10 @@ export default function Services() {
               <div className="inline-block px-4 py-2 bg-accent text-white rounded-full text-sm font-medium">
                 {item.step}
               </div>
-              <h3 className="font-heading text-3xl font-medium"
-
-              >
+              <h3 className="font-heading text-3xl font-medium">
                 {item.title}
               </h3>
-              <p
-                className="text-foreground/70 leading-relaxed"
-               
-              >
+              <p className="text-foreground/70 leading-relaxed">
                 {item.description}
               </p>
             </motion.div>
@@ -356,7 +332,7 @@ export default function Services() {
             Frequently Asked <em className="italic">Questions</em>
           </h2>
           <p className="text-lg text-foreground/70 max-w-2xl">
-            Common questions from Grand Rapids area businesses.
+            Common questions from local businesses.
           </p>
         </motion.div>
 
@@ -394,15 +370,10 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto relative z-10"
         >
-          <h2 className="font-heading text-3xl md:text-5xl lg:text-6xl font-medium mb-6"
-
-          >
+          <h2 className="font-heading text-3xl md:text-5xl lg:text-6xl font-medium mb-6">
             Ready to get <em className="italic">started?</em>
           </h2>
-          <p
-            className="text-lg text-foreground/70 mb-10"
-
-          >
+          <p className="text-lg text-foreground/70 mb-10">
             Let's discuss how I can help bring your vision to life.
           </p>
           <Button href="/contact">Start a Project</Button>

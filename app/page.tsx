@@ -23,7 +23,7 @@ const featuredProjects = [
     title: 'Forever Data',
     client: 'On-Chain Data Storage',
     category: 'Web Design',
-    description: 'Pure utility interface for an Ethereum data storage platform. No marketing, no explanations—just a streamlined tool for uploading and storing data permanently on-chain.',
+    description: 'Interface for permanent on-chain data storage.',
     image: '/forever_data.png',
   },
   // {

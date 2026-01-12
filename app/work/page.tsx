@@ -22,7 +22,7 @@ const allProjects = [
     title: 'Forever Data',
     client: 'On-Chain Data Storage',
     category: 'Web Design',
-    description: 'Pure utility interface for an Ethereum data storage platform. No marketing, no explanations—just a streamlined tool for uploading and storing data permanently on-chain.',
+    description: 'Interface for permanent on-chain data storage.',
     image: '/forever_data.png',
     year: '2024',
   },
@@ -119,27 +119,16 @@ export default function Work() {
                   </div>
 
                   <div className="space-y-3">
-                    <p
-                      className="text-sm text-accent font-medium"
-                     
-                    >
+                    <p className="text-sm text-accent font-medium">
                       {project.category}
                     </p>
-                    <h3 className="font-heading text-2xl font-medium group-hover:text-accent transition-colors"
-
-                    >
+                    <h3 className="font-heading text-2xl font-medium group-hover:text-accent transition-colors">
                       {project.title}
                     </h3>
-                    <p
-                      className="text-sm text-foreground/60"
-                     
-                    >
+                    <p className="text-sm text-foreground/60">
                       {project.client}
                     </p>
-                    <p
-                      className="text-foreground/70 leading-relaxed"
-                     
-                    >
+                    <p className="text-foreground/70 leading-relaxed">
                       {project.description}
                     </p>
                   </div>
