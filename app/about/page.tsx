@@ -7,6 +7,7 @@ import Card from '@/components/ui/Card';
 import Section from '@/components/ui/Section';
 import Divider from '@/components/ui/Divider';
 import BackgroundImage from '@/components/ui/BackgroundImage';
+import { generateBreadcrumbs } from '@/lib/breadcrumbs';
 
 const capabilities = [
   {
@@ -32,8 +33,16 @@ const capabilities = [
 ];
 
 export default function About() {
+  const breadcrumbSchema = generateBreadcrumbs('/about');
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
       <Navigation />
 
       {/* Hero Section */}

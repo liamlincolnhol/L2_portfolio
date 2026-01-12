@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import Card from '@/components/ui/Card';
 import Section from '@/components/ui/Section';
+import { generateBreadcrumbs } from '@/lib/breadcrumbs';
 
 const allProjects = [
   {
@@ -39,8 +40,42 @@ const allProjects = [
 const categories = ['All', 'Web Design'];
 
 export default function Work() {
+  const breadcrumbSchema = generateBreadcrumbs('/work');
+
+  // Portfolio Schema
+  const portfolioSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": allProjects.map((project, index) => ({
+      "@type": "CreativeWork",
+      "position": index + 1,
+      "name": project.title,
+      "description": project.description,
+      "image": `https://liamlincolnhol.agency${project.image}`,
+      "creator": {
+        "@type": "Person",
+        "name": "Liam Lincoln Hol",
+        "jobTitle": "Web Designer"
+      },
+      "dateCreated": project.year,
+      "keywords": project.category
+    }))
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(portfolioSchema),
+        }}
+      />
       <Navigation />
 
       <Section className="pt-32">

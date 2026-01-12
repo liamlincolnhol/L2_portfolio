@@ -7,12 +7,14 @@ import Navigation from '@/components/Navigation';
 import Card from '@/components/ui/Card';
 import Section from '@/components/ui/Section';
 import BackgroundImage from '@/components/ui/BackgroundImage';
+import { generateBreadcrumbs } from '@/lib/breadcrumbs';
 
 interface ContactFormData {
   name: string;
   email: string;
   company?: string;
   message: string;
+  website?: string; // Honeypot field
 }
 
 export default function Contact() {
@@ -23,6 +25,30 @@ export default function Contact() {
     formState: { errors, isSubmitting },
     reset,
   } = useForm<ContactFormData>();
+
+  const breadcrumbSchema = generateBreadcrumbs('/contact');
+
+  // Contact Schema
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "mainEntity": {
+      "@type": "ProfessionalService",
+      "name": "L2 Design",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "liamlincolnholagency@gmail.com",
+        "contactType": "Customer Service",
+        "availableLanguage": "English",
+        "areaServed": [
+          "Grand Rapids, MI",
+          "Lowell, MI",
+          "Cascade, MI",
+          "Ada, MI"
+        ]
+      }
+    }
+  };
 
   const onSubmit = async (data: ContactFormData) => {
     try {
@@ -51,6 +77,18 @@ export default function Contact() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(contactSchema),
+        }}
+      />
       <Navigation />
 
       <Section className="min-h-screen pt-32 relative overflow-hidden">
@@ -310,6 +348,23 @@ export default function Contact() {
                       </p>
                     )}
                   </div>
+
+                  {/* Honeypot field - hidden from users, bots will fill it */}
+                  <input
+                    {...register('website')}
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    style={{
+                      position: 'absolute',
+                      left: '-9999px',
+                      width: '1px',
+                      height: '1px',
+                      opacity: 0,
+                    }}
+                  />
 
                   {/* Submit Button */}
                   <motion.button

@@ -7,6 +7,7 @@ import Card from '@/components/ui/Card';
 import Section from '@/components/ui/Section';
 import Divider from '@/components/ui/Divider';
 import BackgroundImage from '@/components/ui/BackgroundImage';
+import { generateBreadcrumbs } from '@/lib/breadcrumbs';
 
 const services = [
   {
@@ -86,9 +87,136 @@ const process = [
   },
 ];
 
+const faqs = [
+  {
+    question: "How long does it take to build a website?",
+    answer: "Most projects for Grand Rapids businesses launch in 2-3 weeks. We work quickly without sacrificing quality, getting you online when you need it—not months from now."
+  },
+  {
+    question: "How much does a website cost in Grand Rapids?",
+    answer: "As a student building my portfolio, I offer agency-quality work at rates that make sense for local businesses in Grand Rapids and Lowell. Contact me for a custom quote based on your specific needs."
+  },
+  {
+    question: "Do you offer ongoing website maintenance?",
+    answer: "Yes! I provide ongoing support for all Grand Rapids area clients including content updates, bug fixes, performance optimization, and technical support to keep your site running smoothly."
+  },
+  {
+    question: "Will my website work on mobile phones?",
+    answer: "Absolutely. Every website I build is fully responsive and mobile-first, ensuring it looks great and works perfectly on all devices. This is critical for Grand Rapids businesses reaching customers on-the-go."
+  },
+  {
+    question: "Do you help with local SEO for Grand Rapids businesses?",
+    answer: "Yes, all websites include built-in SEO best practices: clean code, fast loading, proper structure, local Grand Rapids SEO optimization, and Google Business integration."
+  },
+  {
+    question: "Do you work with businesses in Lowell, Cascade, and Ada?",
+    answer: "Absolutely! I'm from Lowell and serve the entire Grand Rapids metro area including Lowell, Cascade, Ada, Wyoming, Kentwood, and Grandville."
+  }
+];
+
 export default function Services() {
+  const breadcrumbSchema = generateBreadcrumbs('/services');
+
+  // FAQ Schema
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
+  // Service Schema
+  const servicesSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "Service",
+        "position": 1,
+        "name": "Custom Website Design",
+        "description": "Professional websites built from the ground up. No templates—just clean, modern design tailored to your business and your customers.",
+        "provider": {
+          "@type": "ProfessionalService",
+          "name": "L2 Design"
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Grand Rapids"
+          },
+          {
+            "@type": "City",
+            "name": "Lowell"
+          },
+          {
+            "@type": "City",
+            "name": "Cascade"
+          },
+          {
+            "@type": "City",
+            "name": "Ada"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "position": 2,
+        "name": "Fast Deployment",
+        "description": "Quick turnarounds that get you online when you need it. Most projects launch in 2 weeks, not months.",
+        "provider": {
+          "@type": "ProfessionalService",
+          "name": "L2 Design"
+        }
+      },
+      {
+        "@type": "Service",
+        "position": 3,
+        "name": "Ongoing Support",
+        "description": "Your website doesn't end at launch. We provide updates, fixes, and improvements to keep your site running smoothly.",
+        "provider": {
+          "@type": "ProfessionalService",
+          "name": "L2 Design"
+        }
+      },
+      {
+        "@type": "Service",
+        "position": 4,
+        "name": "Search Visibility",
+        "description": "Built-in SEO best practices so customers can actually find you on Google. Clean code, fast loading, and proper structure.",
+        "provider": {
+          "@type": "ProfessionalService",
+          "name": "L2 Design"
+        }
+      }
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(servicesSchema),
+        }}
+      />
       <Navigation />
 
       {/* Hero Section */}
@@ -215,6 +343,47 @@ export default function Services() {
 
       <Divider />
 
+      {/* FAQ Section */}
+      <Section>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <h2 className="font-heading text-3xl md:text-5xl lg:text-6xl font-medium mb-6">
+            Frequently Asked <em className="italic">Questions</em>
+          </h2>
+          <p className="text-lg text-foreground/70 max-w-2xl">
+            Common questions from Grand Rapids area businesses.
+          </p>
+        </motion.div>
+
+        <div className="space-y-6 max-w-3xl">
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <Card variant="light">
+                <h3 className="text-xl font-heading font-medium mb-3">
+                  {faq.question}
+                </h3>
+                <p className="text-foreground/70 leading-relaxed">
+                  {faq.answer}
+                </p>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      <Divider />
+
       {/* CTA Section */}
       <Section className="relative overflow-hidden">
         <BackgroundImage transform="rotate180" />
@@ -232,7 +401,7 @@ export default function Services() {
           </h2>
           <p
             className="text-lg text-foreground/70 mb-10"
-           
+
           >
             Let's discuss how I can help bring your vision to life.
           </p>
